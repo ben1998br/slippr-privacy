@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacybeleid — Slippr</title>
+  <style>
+    :root {
+      --primary: #2D5BE3;
+      --primary-light: #E8EEFF;
+      --background: #F5F5F7;
+      --surface: #FFFFFF;
+      --text: #1A1A2E;
+      --text-secondary: #6B7280;
+      --border: #E5E7EB;
+      --success: #10B981;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* Header */
+    header {
+      background: var(--primary);
+      padding: 40px 24px 36px;
+      text-align: center;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .logo-text {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    .header-subtitle {
+      color: rgba(255,255,255,0.75);
+      margin-top: 10px;
+      font-size: 15px;
+    }
+
+    /* Lang switcher */
+    .lang-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .lang-btn {
+      padding: 5px 16px;
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      text-decoration: none;
+    }
+
+    .lang-btn.active,
+    .lang-btn:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Main content */
+    main {
+      max-width: 740px;
+      margin: 40px auto 80px;
+      padding: 0 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--primary-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .card-subtitle {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      margin: 8px 0 12px 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    ul li {
+      color: var(--text-secondary);
+      font-size: 15px;
+      padding: 5px 0 5px 24px;
+      position: relative;
+    }
+
+    ul li::before {
+      content: '•';
+      color: var(--primary);
+      font-weight: 700;
+      position: absolute;
+      left: 8px;
+    }
+
+    strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .highlight-box {
+      background: var(--primary-light);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 12px 0;
+      font-size: 14px;
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #DCFCE7;
+      color: #15803D;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 20px 0;
+    }
+
+    .updated {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 13px;
+      margin-top: 32px;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    /* Language sections */
+    .lang-section { display: none; }
+    .lang-section.active { display: block; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .card { padding: 22px 18px; }
+      main { margin-top: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">🧾</div>
+    <span class="logo-text">Slippr</span>
+  </div>
+  <p class="header-subtitle">Onkostenbeheer voor zelfstandigen</p>
+</header>
+
+<div class="lang-bar">
+  <a class="lang-btn active" href="#" onclick="switchLang('nl', this); return false;">🇧🇪 Nederlands</a>
+  <a class="lang-btn" href="#" onclick="switchLang('fr', this); return false;">🇧🇪 Français</a>
+  <a class="lang-btn" href="#" onclick="switchLang('en', this); return false;">🇬🇧 English</a>
+</div>
+
+<main>
+
+  <!-- ═══════════════════════ DUTCH ═══════════════════════ -->
+  <div class="lang-section active" id="lang-nl">
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🔒</div>
+        <div>
+          <div class="card-title">Privacybeleid</div>
+          <div class="card-subtitle">Hoe Slippr omgaat met jouw gegevens</div>
+        </div>
+      </div>
+      <p>Slippr respecteert jouw privacy. Deze pagina legt uit welke gegevens we verzamelen, waarom, en hoe we ze beschermen. We zijn volledig transparant — geen klein lettertype, geen verborgen agenda.</p>
+      <div class="highlight-box">
+        📱 Jouw bonnetjesdata wordt lokaal op jouw telefoon opgeslagen en nergens anders verkocht of gedeeld.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">👤</div>
+        <div>
+          <div class="card-title">Welke gegevens verzamelen we?</div>
+        </div>
+      </div>
+
+      <strong>Accountgegevens (via Google)</strong>
+      <ul>
+        <li>E-mailadres</li>
+        <li>Naam en profielfoto (via Google-login)</li>
+        <li>Uniek gebruikers-ID</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <strong>Bonnetjesdata</strong>
+      <ul>
+        <li>Foto's van bonnetjes (tijdelijk verwerkt, niet permanent opgeslagen op onze servers)</li>
+        <li>Bedragen, BTW-percentages, leveranciersnamen, datums, categorieën en omschrijvingen</li>
+        <li>Deze gegevens worden <strong>lokaal opgeslagen op jouw toestel</strong></li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <strong>Abonnementsgegevens</strong>
+      <ul>
+        <li>Status van je abonnement (actief / niet actief)</li>
+        <li>Aankopen via de Google Play Store worden verwerkt door Google en RevenueCat</li>
+        <li>Slippr heeft nooit toegang tot je betalingsgegevens (creditcardnummer, etc.)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">⚙️</div>
+        <div>
+          <div class="card-title">Waarvoor gebruiken we jouw gegevens?</div>
+        </div>
+      </div>
+      <ul>
+        <li><strong>Inloggen</strong> — via je Google-account</li>
+        <li><strong>Bonnetjes verwerken</strong> — foto's worden tijdelijk naar onze AI-service gestuurd om bedragen, BTW en leverancier te herkennen</li>
+        <li><strong>Abonnementsbeheer</strong> — controleren of je een actief Premium-abonnement hebt</li>
+        <li><strong>Exporteren</strong> — CSV- en PDF-rapporten worden lokaal op jouw toestel aangemaakt</li>
+      </ul>
+      <p>We gebruiken jouw gegevens <strong>nooit</strong> voor advertenties, profilering of verkoop aan derden.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🤝</div>
+        <div>
+          <div class="card-title">Derde partijen</div>
+        </div>
+      </div>
+      <p>Slippr werkt samen met onderstaande vertrouwde diensten:</p>
+
+      <ul>
+        <li><strong>Supabase</strong> — authenticatie en verwerking van bonnetjesfoto's (servers in de EU) — <a href="https://supabase.com/privacy" target="_blank">privacybeleid</a></li>
+        <li><strong>Google</strong> — aanmelden via Google OAuth — <a href="https://policies.google.com/privacy" target="_blank">privacybeleid</a></li>
+        <li><strong>RevenueCat</strong> — abonnementsbeheer en aankopen — <a href="https://www.revenuecat.com/privacy" target="_blank">privacybeleid</a></li>
+        <li><strong>Google Play</strong> — betalingsverwerking — <a href="https://payments.google.com/payments/apis-secure/get_legal_document?ldo=0&ldt=privacynotice" target="_blank">privacybeleid</a></li>
+      </ul>
+
+      <div class="highlight-box">
+        🌍 Alle verwerking door Supabase vindt plaats op EU-servers, in lijn met de GDPR.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📸</div>
+        <div>
+          <div class="card-title">Camera & foto's</div>
+        </div>
+      </div>
+      <p>Slippr vraagt toegang tot je camera en fotobibliotheek om bonnetjes te scannen. Foto's worden:</p>
+      <ul>
+        <li>Tijdelijk verstuurd naar onze server voor AI-herkenning</li>
+        <li><strong>Niet permanent opgeslagen</strong> op onze servers na verwerking</li>
+        <li>Lokaal bijgehouden op jouw toestel als je ze opslaat in de app</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">⚖️</div>
+        <div>
+          <div class="card-title">Jouw rechten (GDPR)</div>
+          <div class="card-subtitle">Als inwoner van de EU heb je het recht om:</div>
+        </div>
+      </div>
+      <ul>
+        <li><strong>Inzage</strong> — te vragen welke gegevens we over jou hebben</li>
+        <li><strong>Correctie</strong> — foute gegevens te laten aanpassen</li>
+        <li><strong>Verwijdering</strong> — je account en alle bijhorende data te laten wissen</li>
+        <li><strong>Bezwaar</strong> — bezwaar te maken tegen bepaalde verwerkingen</li>
+        <li><strong>Overdraagbaarheid</strong> — je data op te vragen in een leesbaar formaat</li>
+      </ul>
+      <p>Stuur een e-mail naar <a href="mailto:privacy@slippr.app">privacy@slippr.app</a> om een van deze rechten uit te oefenen. We reageren binnen 30 dagen.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🗄️</div>
+        <div>
+          <div class="card-title">Bewaring van gegevens</div>
+        </div>
+      </div>
+      <ul>
+        <li><strong>Bonnetjesdata</strong> — wordt lokaal op jouw toestel bewaard zolang je de app gebruikt</li>
+        <li><strong>Accountgegevens</strong> — worden bewaard zolang je account actief is</li>
+        <li><strong>Bonnetjesfoto's</strong> — worden na AI-verwerking niet langer bijgehouden op onze servers</li>
+      </ul>
+      <p>Bij het verwijderen van je account worden alle servergegevens binnen 30 dagen gewist.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📬</div>
+        <div>
+          <div class="card-title">Contact</div>
+        </div>
+      </div>
+      <p>Vragen over dit privacybeleid? Neem gerust contact op:</p>
+      <ul>
+        <li><strong>E-mail:</strong> <a href="mailto:privacy@slippr.app">privacy@slippr.app</a></li>
+        <li><strong>App:</strong> Slippr — beschikbaar via Google Play</li>
+      </ul>
+      <p>Je kunt ook een klacht indienen bij de Belgische privacytoezichthouder: <a href="https://www.gegevensbeschermingsautoriteit.be" target="_blank">gegevensbeschermingsautoriteit.be</a></p>
+    </div>
+
+    <p class="updated">Laatst bijgewerkt: april 2026</p>
+
+  </div>
+  <!-- end #lang-nl -->
+
+
+  <!-- ═══════════════════════ FRENCH ═══════════════════════ -->
+  <div class="lang-section" id="lang-fr">
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🔒</div>
+        <div>
+          <div class="card-title">Politique de confidentialité</div>
+          <div class="card-subtitle">Comment Slippr gère vos données</div>
+        </div>
+      </div>
+      <p>Slippr respecte votre vie privée. Cette page explique quelles données nous collectons, pourquoi et comment nous les protégeons. Nous sommes totalement transparents — pas de petits caractères, pas d'agenda caché.</p>
+      <div class="highlight-box">
+        📱 Vos données de reçus sont stockées localement sur votre téléphone et ne sont ni vendues ni partagées.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">👤</div>
+        <div><div class="card-title">Quelles données collectons-nous ?</div></div>
+      </div>
+
+      <strong>Données de compte (via Google)</strong>
+      <ul>
+        <li>Adresse e-mail</li>
+        <li>Nom et photo de profil (via connexion Google)</li>
+        <li>Identifiant utilisateur unique</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <strong>Données des reçus</strong>
+      <ul>
+        <li>Photos de reçus (traitées temporairement, non stockées de façon permanente sur nos serveurs)</li>
+        <li>Montants, taux de TVA, noms de fournisseurs, dates, catégories et descriptions</li>
+        <li>Ces données sont <strong>stockées localement sur votre appareil</strong></li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <strong>Données d'abonnement</strong>
+      <ul>
+        <li>Statut de votre abonnement (actif / inactif)</li>
+        <li>Les achats via Google Play Store sont traités par Google et RevenueCat</li>
+        <li>Slippr n'a jamais accès à vos données de paiement</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">⚙️</div>
+        <div><div class="card-title">Pourquoi utilisons-nous vos données ?</div></div>
+      </div>
+      <ul>
+        <li><strong>Connexion</strong> — via votre compte Google</li>
+        <li><strong>Traitement des reçus</strong> — les photos sont envoyées temporairement à notre service IA pour reconnaître les montants, la TVA et le fournisseur</li>
+        <li><strong>Gestion des abonnements</strong> — vérifier si vous avez un abonnement Premium actif</li>
+        <li><strong>Export</strong> — les rapports CSV et PDF sont créés localement sur votre appareil</li>
+      </ul>
+      <p>Nous n'utilisons <strong>jamais</strong> vos données à des fins publicitaires, de profilage ou de vente à des tiers.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🤝</div>
+        <div><div class="card-title">Tiers partenaires</div></div>
+      </div>
+      <ul>
+        <li><strong>Supabase</strong> — authentification et traitement des photos (serveurs en UE) — <a href="https://supabase.com/privacy" target="_blank">politique de confidentialité</a></li>
+        <li><strong>Google</strong> — connexion via Google OAuth — <a href="https://policies.google.com/privacy" target="_blank">politique de confidentialité</a></li>
+        <li><strong>RevenueCat</strong> — gestion des abonnements — <a href="https://www.revenuecat.com/privacy" target="_blank">politique de confidentialité</a></li>
+        <li><strong>Google Play</strong> — traitement des paiements — <a href="https://payments.google.com/payments/apis-secure/get_legal_document?ldo=0&ldt=privacynotice" target="_blank">politique de confidentialité</a></li>
+      </ul>
+      <div class="highlight-box">
+        🌍 Tout le traitement par Supabase a lieu sur des serveurs de l'UE, conformément au RGPD.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">⚖️</div>
+        <div>
+          <div class="card-title">Vos droits (RGPD)</div>
+          <div class="card-subtitle">En tant que résident de l'UE, vous avez le droit de :</div>
+        </div>
+      </div>
+      <ul>
+        <li><strong>Accès</strong> — demander quelles données nous détenons sur vous</li>
+        <li><strong>Rectification</strong> — faire corriger des données incorrectes</li>
+        <li><strong>Effacement</strong> — faire supprimer votre compte et toutes les données associées</li>
+        <li><strong>Opposition</strong> — vous opposer à certains traitements</li>
+        <li><strong>Portabilité</strong> — demander vos données dans un format lisible</li>
+      </ul>
+      <p>Envoyez un e-mail à <a href="mailto:privacy@slippr.app">privacy@slippr.app</a>. Nous répondons dans les 30 jours.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📬</div>
+        <div><div class="card-title">Contact</div></div>
+      </div>
+      <ul>
+        <li><strong>E-mail :</strong> <a href="mailto:privacy@slippr.app">privacy@slippr.app</a></li>
+      </ul>
+      <p>Vous pouvez également introduire une plainte auprès de l'Autorité de protection des données belge : <a href="https://www.autoriteprotectiondonnees.be" target="_blank">autoriteprotectiondonnees.be</a></p>
+    </div>
+
+    <p class="updated">Dernière mise à jour : avril 2026</p>
+
+  </div>
+  <!-- end #lang-fr -->
+
+
+  <!-- ═══════════════════════ ENGLISH ═══════════════════════ -->
+  <div class="lang-section" id="lang-en">
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🔒</div>
+        <div>
+          <div class="card-title">Privacy Policy</div>
+          <div class="card-subtitle">How Slippr handles your data</div>
+        </div>
+      </div>
+      <p>Slippr respects your privacy. This page explains what data we collect, why, and how we protect it. We are fully transparent — no fine print, no hidden agenda.</p>
+      <div class="highlight-box">
+        📱 Your receipt data is stored locally on your phone and is never sold or shared with anyone.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">👤</div>
+        <div><div class="card-title">What data do we collect?</div></div>
+      </div>
+
+      <strong>Account data (via Google)</strong>
+      <ul>
+        <li>Email address</li>
+        <li>Name and profile picture (via Google sign-in)</li>
+        <li>Unique user ID</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <strong>Receipt data</strong>
+      <ul>
+        <li>Receipt photos (temporarily processed, not permanently stored on our servers)</li>
+        <li>Amounts, VAT rates, supplier names, dates, categories and descriptions</li>
+        <li>This data is <strong>stored locally on your device</strong></li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <strong>Subscription data</strong>
+      <ul>
+        <li>Subscription status (active / inactive)</li>
+        <li>Purchases via Google Play Store are processed by Google and RevenueCat</li>
+        <li>Slippr never has access to your payment details</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">⚙️</div>
+        <div><div class="card-title">Why do we use your data?</div></div>
+      </div>
+      <ul>
+        <li><strong>Sign in</strong> — via your Google account</li>
+        <li><strong>Receipt processing</strong> — photos are temporarily sent to our AI service to recognise amounts, VAT and supplier</li>
+        <li><strong>Subscription management</strong> — checking whether you have an active Premium subscription</li>
+        <li><strong>Export</strong> — CSV and PDF reports are generated locally on your device</li>
+      </ul>
+      <p>We <strong>never</strong> use your data for advertising, profiling or selling to third parties.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🤝</div>
+        <div><div class="card-title">Third parties</div></div>
+      </div>
+      <ul>
+        <li><strong>Supabase</strong> — authentication and receipt processing (EU servers) — <a href="https://supabase.com/privacy" target="_blank">privacy policy</a></li>
+        <li><strong>Google</strong> — sign-in via Google OAuth — <a href="https://policies.google.com/privacy" target="_blank">privacy policy</a></li>
+        <li><strong>RevenueCat</strong> — subscription management — <a href="https://www.revenuecat.com/privacy" target="_blank">privacy policy</a></li>
+        <li><strong>Google Play</strong> — payment processing — <a href="https://payments.google.com/payments/apis-secure/get_legal_document?ldo=0&ldt=privacynotice" target="_blank">privacy policy</a></li>
+      </ul>
+      <div class="highlight-box">
+        🌍 All processing by Supabase takes place on EU servers, in line with the GDPR.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">⚖️</div>
+        <div>
+          <div class="card-title">Your rights (GDPR)</div>
+          <div class="card-subtitle">As an EU resident, you have the right to:</div>
+        </div>
+      </div>
+      <ul>
+        <li><strong>Access</strong> — request what data we hold about you</li>
+        <li><strong>Rectification</strong> — have incorrect data corrected</li>
+        <li><strong>Erasure</strong> — have your account and all associated data deleted</li>
+        <li><strong>Objection</strong> — object to certain processing activities</li>
+        <li><strong>Portability</strong> — request your data in a readable format</li>
+      </ul>
+      <p>Send an email to <a href="mailto:privacy@slippr.app">privacy@slippr.app</a>. We respond within 30 days.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📬</div>
+        <div><div class="card-title">Contact</div></div>
+      </div>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:privacy@slippr.app">privacy@slippr.app</a></li>
+      </ul>
+      <p>You can also lodge a complaint with the Belgian data protection authority: <a href="https://www.dataprotectionauthority.be" target="_blank">dataprotectionauthority.be</a></p>
+    </div>
+
+    <p class="updated">Last updated: April 2026</p>
+
+  </div>
+  <!-- end #lang-en -->
+
+</main>
+
+<footer>
+  <strong>Slippr</strong> &nbsp;·&nbsp; Onkostenbeheer voor zelfstandigen &nbsp;·&nbsp;
+  <a href="mailto:privacy@slippr.app">privacy@slippr.app</a>
+</footer>
+
+<script>
+  function switchLang(lang, btn) {
+    document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById('lang-' + lang).classList.add('active');
+    btn.classList.add('active');
+    document.documentElement.lang = lang;
+  }
+</script>
+
+</body>
+</html>
