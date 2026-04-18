@@ -13,11 +13,11 @@
       --text: #1A1A2E;
       --text-secondary: #6B7280;
       --border: #E5E7EB;
-      --danger: #EF4444;
+      --warning-bg: #FEF3C7;
+      --warning-text: #92400E;
+      --warning-border: #F59E0B;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       background: var(--background);
@@ -25,402 +25,217 @@
       line-height: 1.7;
       font-size: 16px;
     }
-
-    header {
-      background: var(--primary);
-      padding: 40px 24px 36px;
-      text-align: center;
-    }
-
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .logo-icon {
-      width: 48px;
-      height: 48px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-    }
-
-    .logo-text {
-      font-size: 28px;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.5px;
-    }
-
-    .header-subtitle {
-      color: rgba(255,255,255,0.75);
-      margin-top: 10px;
-      font-size: 15px;
-    }
-
-    .lang-bar {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 10px 24px;
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .lang-btn {
-      padding: 5px 16px;
-      border-radius: 20px;
-      border: 1.5px solid var(--border);
-      background: transparent;
-      color: var(--text-secondary);
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.15s;
-      text-decoration: none;
-    }
-
-    .lang-btn.active,
-    .lang-btn:hover {
-      background: var(--primary-light);
-      border-color: var(--primary);
-      color: var(--primary);
-    }
-
-    main {
-      max-width: 740px;
-      margin: 40px auto 80px;
-      padding: 0 24px;
-    }
-
-    .card {
-      background: var(--surface);
-      border-radius: 16px;
-      padding: 32px;
-      margin-bottom: 16px;
-      border: 1px solid var(--border);
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-
-    .card-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--primary-light);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      flex-shrink: 0;
-    }
-
-    .card-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .card-subtitle {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-top: 2px;
-    }
-
-    p {
-      color: var(--text-secondary);
-      margin-bottom: 12px;
-      font-size: 15px;
-    }
-
+    header { background: var(--primary); padding: 40px 24px 36px; text-align: center; }
+    .logo { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { width: 48px; height: 48px; background: rgba(255,255,255,0.15); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+    .logo-text { font-size: 28px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+    .header-subtitle { color: rgba(255,255,255,0.75); margin-top: 10px; font-size: 15px; }
+    .lang-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 10px 24px; display: flex; justify-content: center; gap: 8px; }
+    .lang-btn { padding: 5px 16px; border-radius: 20px; border: 1.5px solid var(--border); background: transparent; color: var(--text-secondary); font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s; text-decoration: none; }
+    .lang-btn.active, .lang-btn:hover { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
+    main { max-width: 740px; margin: 40px auto 80px; padding: 0 24px; }
+    .card { background: var(--surface); border-radius: 16px; padding: 32px; margin-bottom: 16px; border: 1px solid var(--border); }
+    .card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .card-icon { width: 44px; height: 44px; background: var(--primary-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .card-title { font-size: 18px; font-weight: 700; color: var(--text); }
+    .card-subtitle { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+    p { color: var(--text-secondary); margin-bottom: 12px; font-size: 15px; }
     p:last-child { margin-bottom: 0; }
-
-    ul {
-      margin: 8px 0 12px 0;
-      padding-left: 0;
-      list-style: none;
-    }
-
-    ul li {
-      color: var(--text-secondary);
-      font-size: 15px;
-      padding: 5px 0 5px 24px;
-      position: relative;
-    }
-
-    ul li::before {
-      content: '•';
-      color: var(--primary);
-      font-weight: 700;
-      position: absolute;
-      left: 8px;
-    }
-
-    strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .highlight-box {
-      background: var(--primary-light);
-      border-radius: 10px;
-      padding: 14px 18px;
-      margin: 12px 0;
-      font-size: 14px;
-      color: var(--primary);
-      font-weight: 500;
-    }
-
-    .warning-box {
-      background: #FEF3C7;
-      border-left: 4px solid #F59E0B;
-      border-radius: 8px;
-      padding: 14px 18px;
-      margin: 12px 0;
-      font-size: 14px;
-      color: #92400E;
-    }
-
-    .footer-note {
-      text-align: center;
-      margin-top: 40px;
-      color: var(--text-secondary);
-      font-size: 13px;
-    }
-
-    .footer-note a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .footer-note a:hover { text-decoration: underline; }
-
-    .updated {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-top: 14px;
-      text-align: center;
-    }
-
-    @media (max-width: 600px) {
-      header { padding: 32px 20px 28px; }
-      main { margin: 24px auto 40px; padding: 0 16px; }
-      .card { padding: 22px 20px; }
-      .logo-text { font-size: 24px; }
-    }
+    ul { margin: 8px 0 12px 0; padding-left: 0; list-style: none; }
+    ul li { color: var(--text-secondary); font-size: 15px; padding: 5px 0 5px 24px; position: relative; }
+    ul li::before { content: '•'; color: var(--primary); font-weight: 700; position: absolute; left: 8px; }
+    strong { color: var(--text); font-weight: 600; }
+    .highlight-box { background: var(--primary-light); border-radius: 10px; padding: 14px 18px; margin: 12px 0; font-size: 14px; color: var(--primary); font-weight: 500; }
+    .warning-box { background: var(--warning-bg); border-left: 4px solid var(--warning-border); border-radius: 8px; padding: 14px 18px; margin: 12px 0; font-size: 14px; color: var(--warning-text); }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .lang-section { display: none; }
+    .lang-section.active { display: block; }
+    .updated { text-align: center; color: var(--text-secondary); font-size: 13px; margin-top: 16px; }
+    .footer-note { text-align: center; margin-top: 40px; color: var(--text-secondary); font-size: 13px; }
+    footer { text-align: center; padding: 32px 24px; background: var(--surface); border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 13px; }
+    @media (max-width: 600px) { .card { padding: 22px 18px; } main { margin-top: 24px; } .logo-text { font-size: 24px; } }
   </style>
 </head>
 <body>
-  <header>
-    <a class="logo" href="index.html">
-      <div class="logo-icon">📄</div>
-      <div class="logo-text">Slippr</div>
-    </a>
-    <div class="header-subtitle">Algemene voorwaarden</div>
-  </header>
 
-  <div class="lang-bar">
-    <a class="lang-btn active" href="#nl">NL</a>
-    <a class="lang-btn" href="#fr">FR</a>
-    <a class="lang-btn" href="#en">EN</a>
+<header>
+  <div class="logo">
+    <div class="logo-icon">📄</div>
+    <span class="logo-text">Slippr</span>
   </div>
+  <p class="header-subtitle">Algemene voorwaarden / Conditions générales / Terms of Service</p>
+</header>
 
-  <main>
+<div class="lang-bar">
+  <a class="lang-btn active" href="#" onclick="switchLang('nl', this); return false;">Nederlands</a>
+  <a class="lang-btn" href="#" onclick="switchLang('fr', this); return false;">Français</a>
+  <a class="lang-btn" href="#" onclick="switchLang('en', this); return false;">English</a>
+</div>
+
+<main>
+
+  <!-- DUTCH -->
+  <div class="lang-section active" id="lang-nl">
     <p class="updated">Laatst bijgewerkt: 18 april 2026</p>
 
-    <!-- ============================================================== -->
-    <!-- NL -->
-    <!-- ============================================================== -->
-    <section id="nl">
+    <div class="card"><div class="card-header"><div class="card-icon">📄</div><div><div class="card-title">1. Overeenkomst</div><div class="card-subtitle">Wat je accepteert door Slippr te gebruiken</div></div></div>
+    <p>Door Slippr (de "App") te downloaden, installeren of gebruiken ga je akkoord met deze algemene voorwaarden. Als je niet akkoord gaat, gebruik de App dan niet.</p>
+    <p>Slippr wordt beheerd door <strong>Ben Renier</strong> (de "Beheerder"), gevestigd in België.</p></div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">📄</div>
-          <div>
-            <div class="card-title">1. Overeenkomst</div>
-            <div class="card-subtitle">Wat je accepteert door Slippr te gebruiken</div>
-          </div>
-        </div>
-        <p>Door Slippr (de "App") te downloaden, installeren of gebruiken ga je akkoord met deze algemene voorwaarden. Als je niet akkoord gaat, gebruik de App dan niet.</p>
-        <p>Slippr wordt beheerd door <strong>Ben Renier</strong> (de "Beheerder"), gevestigd in België.</p>
-      </div>
+    <div class="card"><div class="card-header"><div class="card-icon">🎯</div><div><div class="card-title">2. Wat Slippr doet</div><div class="card-subtitle">Doel en beperkingen</div></div></div>
+    <p>Slippr is een bonnetjes-scanner die kunstmatige intelligentie gebruikt om gegevens uit gefotografeerde of geüploade bonnen en facturen te halen.</p>
+    <div class="warning-box">Slippr is een hulpmiddel voor boekhouding — <strong>geen vervanger</strong> voor professioneel fiscaal, boekhoudkundig of juridisch advies.</div></div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">🎯</div>
-          <div>
-            <div class="card-title">2. Wat Slippr doet</div>
-            <div class="card-subtitle">Doel en beperkingen</div>
-          </div>
-        </div>
-        <p>Slippr is een bonnetjes-scanner die kunstmatige intelligentie gebruikt om gegevens uit gefotografeerde of geüploade bonnen en facturen te halen.</p>
-        <div class="warning-box">
-          Slippr is een hulpmiddel voor boekhouding — <strong>geen vervanger</strong> voor professioneel fiscaal, boekhoudkundig of juridisch advies.
-        </div>
-      </div>
+    <div class="card"><div class="card-header"><div class="card-icon">👤</div><div><div class="card-title">3. Jouw account</div><div class="card-subtitle">Verantwoordelijkheden</div></div></div>
+    <ul><li>Je meldt je aan met een Google-account. Jij bent verantwoordelijk voor het beveiligen van je Google-gegevens.</li><li>Je moet minstens <strong>16 jaar</strong> oud zijn om de App te gebruiken.</li><li>Eén account per persoon. Accounts delen is niet toegestaan.</li></ul></div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">👤</div>
-          <div>
-            <div class="card-title">3. Jouw account</div>
-            <div class="card-subtitle">Verantwoordelijkheden</div>
-          </div>
-        </div>
-        <ul>
-          <li>Je meldt je aan met een Google-account. Jij bent verantwoordelijk voor het beveiligen van je Google-gegevens.</li>
-          <li>Je moet minstens <strong>16 jaar</strong> oud zijn om de App te gebruiken.</li>
-          <li>Eén account per persoon. Accounts delen is niet toegestaan.</li>
-        </ul>
-      </div>
+    <div class="card"><div class="card-header"><div class="card-icon">💳</div><div><div class="card-title">4. Prijzen en abonnementen</div><div class="card-subtitle">Gratis tier en Premium</div></div></div>
+    <ul><li><strong>Gratis tier:</strong> 5 scans in totaal per account.</li><li><strong>Premium-abonnement:</strong> €7,99/maand voor onbeperkt scannen. Gefactureerd via Google Play Billing.</li><li>Abonnementen worden automatisch verlengd tot je ze annuleert. Annuleren kan op elk moment via je Google Play-account.</li><li>Terugbetalingen worden afgehandeld door Google Play volgens hun beleid. De Beheerder verwerkt geen terugbetalingen rechtstreeks.</li></ul></div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">💳</div>
-          <div>
-            <div class="card-title">4. Prijzen en abonnementen</div>
-            <div class="card-subtitle">Gratis tier en Premium</div>
-          </div>
-        </div>
-        <ul>
-          <li><strong>Gratis tier:</strong> 5 scans in totaal per account.</li>
-          <li><strong>Premium-abonnement:</strong> €7,99/maand voor onbeperkt scannen. Gefactureerd via Google Play Billing.</li>
-          <li>Abonnementen worden automatisch verlengd tot je ze annuleert. Annuleren kan op elk moment via je Google Play-account.</li>
-          <li>Terugbetalingen worden afgehandeld door Google Play volgens hun beleid. De Beheerder verwerkt geen terugbetalingen rechtstreeks.</li>
-        </ul>
-      </div>
+    <div class="card"><div class="card-header"><div class="card-icon">🔒</div><div><div class="card-title">5. Jouw gegevens</div><div class="card-subtitle">Eigendom en opslag</div></div></div>
+    <ul><li>De gegevens die je invoert (bonnen, bedragen, foto's) zijn <strong>van jou</strong>.</li><li>Deze gegevens worden bewaard op beveiligde cloudinfrastructuur (Supabase, EU-regio) zodat je ze kan herstellen als je toestel verloren gaat.</li><li>Zie ons <a href="index.html">privacybeleid</a> voor details over wat we verzamelen en hoe het wordt verwerkt.</li><li>Je kan je account en alle bijhorende gegevens op elk moment verwijderen via het Instellingen-scherm in de app.</li></ul></div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">🔒</div>
-          <div>
-            <div class="card-title">5. Jouw gegevens</div>
-            <div class="card-subtitle">Eigendom en opslag</div>
-          </div>
-        </div>
-        <ul>
-          <li>De gegevens die je invoert (bonnen, bedragen, foto's) zijn <strong>van jou</strong>.</li>
-          <li>Deze gegevens worden bewaard op beveiligde cloudinfrastructuur (Supabase, EU-regio) zodat je ze kan herstellen als je toestel verloren gaat.</li>
-          <li>Zie ons <a href="index.html" style="color: var(--primary);">privacybeleid</a> voor details over wat we verzamelen en hoe het wordt verwerkt.</li>
-          <li>Je kan je account en alle bijhorende gegevens op elk moment verwijderen via het Instellingen-scherm in de app.</li>
-        </ul>
-      </div>
+    <div class="card"><div class="card-header"><div class="card-icon">🤖</div><div><div class="card-title">6. Nauwkeurigheid van AI-extractie</div><div class="card-subtitle">Je blijft eindverantwoordelijk</div></div></div>
+    <p>Slippr gebruikt AI (Anthropic Claude) om gegevens uit bonnen te halen. De AI is over het algemeen betrouwbaar maar <strong>niet perfect</strong>.</p>
+    <div class="warning-box">Je bent zelf verantwoordelijk om elke geëxtraheerde waarde <strong>te verifiëren</strong> voordat je die indient bij je boekhouder of bij de belastingen. Slippr doet suggesties; <strong>jij bent de eindautoriteit</strong> over wat correct is.</div></div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">🤖</div>
-          <div>
-            <div class="card-title">6. Nauwkeurigheid van AI-extractie</div>
-            <div class="card-subtitle">Je blijft eindverantwoordelijk</div>
-          </div>
-        </div>
-        <p>Slippr gebruikt AI (Anthropic Claude) om gegevens uit bonnen te halen. De AI is over het algemeen betrouwbaar maar <strong>niet perfect</strong>.</p>
-        <div class="warning-box">
-          Je bent zelf verantwoordelijk om elke geëxtraheerde waarde <strong>te verifiëren</strong> voordat je die indient bij je boekhouder of bij de belastingen. Slippr doet suggesties; <strong>jij bent de eindautoriteit</strong> over wat correct is.
-        </div>
-      </div>
+    <div class="card"><div class="card-header"><div class="card-icon">⚠️</div><div><div class="card-title">7. Aanvaardbaar gebruik</div><div class="card-subtitle">Wat niet mag</div></div></div>
+    <p>Je stemt ermee in om niet:</p>
+    <ul><li>De App te gebruiken voor illegale doeleinden of frauduleuze documenten te verwerken.</li><li>De App te reverse-engineeren, te decompileren of broncode te proberen extraheren.</li><li>De paywall, scan-limieten of abonnements-verificatie te omzeilen.</li><li>Scans van bonnen van andere mensen te delen zonder hun toestemming.</li><li>Inhoud te uploaden die intellectuele eigendomsrechten schendt, lasterlijk is of malware bevat.</li></ul>
+    <p>Overtreding kan leiden tot onmiddellijke beëindiging van je account, zonder terugbetaling.</p></div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">⚠️</div>
-          <div>
-            <div class="card-title">7. Aanvaardbaar gebruik</div>
-            <div class="card-subtitle">Wat niet mag</div>
-          </div>
-        </div>
-        <p>Je stemt ermee in om niet:</p>
-        <ul>
-          <li>De App te gebruiken voor illegale doeleinden of frauduleuze documenten te verwerken.</li>
-          <li>De App te reverse-engineeren, te decompileren of broncode te proberen extraheren.</li>
-          <li>De paywall, scan-limieten of abonnements-verificatie te omzeilen.</li>
-          <li>Scans van bonnen van andere mensen te delen zonder hun toestemming.</li>
-          <li>Inhoud te uploaden die intellectuele eigendomsrechten schendt, lasterlijk is of malware bevat.</li>
-        </ul>
-        <p>Overtreding kan leiden tot onmiddellijke beëindiging van je account, zonder terugbetaling.</p>
-      </div>
+    <div class="card"><div class="card-header"><div class="card-icon">⚖️</div><div><div class="card-title">8. Onze aansprakelijkheid</div><div class="card-subtitle">Beperkingen</div></div></div>
+    <p>De App wordt geleverd <strong>"zoals ze is"</strong>, zonder enige garantie. Voor zover wettelijk toegestaan:</p>
+    <ul><li>Zijn wij niet aansprakelijk voor fiscale fouten, fiscale boetes, gemiste aftrekposten of ander financieel verlies dat voortvloeit uit je gebruik van de App.</li><li>Zijn wij niet aansprakelijk voor gegevensverlies door toestelstoring, verwijdering of verlies. We bieden een cloud-backup, maar geven geen uptime-garantie.</li><li>Is onze totale aansprakelijkheid, indien van toepassing, beperkt tot het bedrag dat je ons in de 12 maanden vóór de claim hebt betaald.</li></ul></div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">⚖️</div>
-          <div>
-            <div class="card-title">8. Onze aansprakelijkheid</div>
-            <div class="card-subtitle">Beperkingen</div>
-          </div>
-        </div>
-        <p>De App wordt geleverd <strong>"zoals ze is"</strong>, zonder enige garantie. Voor zover wettelijk toegestaan:</p>
-        <ul>
-          <li>Zijn wij niet aansprakelijk voor fiscale fouten, fiscale boetes, gemiste aftrekposten of ander financieel verlies dat voortvloeit uit je gebruik van de App.</li>
-          <li>Zijn wij niet aansprakelijk voor gegevensverlies door toestelstoring, verwijdering of verlies. We bieden een cloud-backup, maar geven geen uptime-garantie.</li>
-          <li>Is onze totale aansprakelijkheid, indien van toepassing, beperkt tot het bedrag dat je ons in de 12 maanden vóór de claim hebt betaald.</li>
-        </ul>
-      </div>
+    <div class="card"><div class="card-header"><div class="card-icon">🔄</div><div><div class="card-title">9. Wijzigingen aan deze voorwaarden</div><div class="card-subtitle">Hoe we communiceren</div></div></div>
+    <p>We kunnen deze voorwaarden van tijd tot tijd bijwerken. Doorlopend gebruik van de App na wijzigingen betekent aanvaarding van de nieuwe voorwaarden. Belangrijke wijzigingen worden in de app aangekondigd.</p></div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">🔄</div>
-          <div>
-            <div class="card-title">9. Wijzigingen aan deze voorwaarden</div>
-            <div class="card-subtitle">Hoe we communiceren</div>
-          </div>
-        </div>
-        <p>We kunnen deze voorwaarden van tijd tot tijd bijwerken. Doorlopend gebruik van de App na wijzigingen betekent aanvaarding van de nieuwe voorwaarden. Belangrijke wijzigingen worden in de app aangekondigd.</p>
-      </div>
+    <div class="card"><div class="card-header"><div class="card-icon">🚪</div><div><div class="card-title">10. Beëindiging</div><div class="card-subtitle">Einde gebruik</div></div></div>
+    <ul><li>Je kan op elk moment stoppen met het gebruik van de App en je account verwijderen.</li><li>Wij kunnen je account opschorten of beëindigen als je deze voorwaarden schendt, met of zonder voorafgaande kennisgeving.</li><li>Bij beëindiging eindigt je recht om de App te gebruiken onmiddellijk. Gegevens kunnen tot 30 dagen worden bewaard om technische redenen voordat ze permanent worden verwijderd.</li></ul></div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">🚪</div>
-          <div>
-            <div class="card-title">10. Beëindiging</div>
-            <div class="card-subtitle">Einde gebruik</div>
-          </div>
-        </div>
-        <ul>
-          <li>Je kan op elk moment stoppen met het gebruik van de App en je account verwijderen.</li>
-          <li>Wij kunnen je account opschorten of beëindigen als je deze voorwaarden schendt, met of zonder voorafgaande kennisgeving.</li>
-          <li>Bij beëindiging eindigt je recht om de App te gebruiken onmiddellijk. Gegevens kunnen tot 30 dagen worden bewaard om technische redenen voordat ze permanent worden verwijderd.</li>
-        </ul>
-      </div>
+    <div class="card"><div class="card-header"><div class="card-icon">🇧🇪</div><div><div class="card-title">11. Toepasselijk recht</div><div class="card-subtitle">Jurisdictie</div></div></div>
+    <p>Deze voorwaarden worden beheerst door het Belgisch recht. Elk geschil wordt voorgelegd aan de bevoegde rechtbanken van België, onverminderd enige dwingende consumentenbeschermingswetten die op jou van toepassing zijn.</p></div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">🇧🇪</div>
-          <div>
-            <div class="card-title">11. Toepasselijk recht</div>
-            <div class="card-subtitle">Jurisdictie</div>
-          </div>
-        </div>
-        <p>Deze voorwaarden worden beheerst door het Belgisch recht. Elk geschil wordt voorgelegd aan de bevoegde rechtbanken van België, onverminderd enige dwingende consumentenbeschermingswetten die op jou van toepassing zijn.</p>
-      </div>
+    <div class="card"><div class="card-header"><div class="card-icon">📬</div><div><div class="card-title">12. Contact</div><div class="card-subtitle">Vragen over deze voorwaarden</div></div></div>
+    <div class="highlight-box">📧 <strong>E-mail:</strong> ben1998.br@gmail.com</div></div>
 
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">📬</div>
-          <div>
-            <div class="card-title">12. Contact</div>
-            <div class="card-subtitle">Vragen over deze voorwaarden</div>
-          </div>
-        </div>
-        <div class="highlight-box">
-          📧 <strong>E-mail:</strong> ben1998.br@gmail.com
-        </div>
-      </div>
+    <p class="footer-note"><a href="index.html">← Terug naar privacybeleid</a></p>
+  </div>
 
-    </section>
+  <!-- FRENCH -->
+  <div class="lang-section" id="lang-fr">
+    <p class="updated">Dernière mise à jour : 18 avril 2026</p>
 
-    <p class="footer-note">
-      <a href="index.html">← Terug naar privacybeleid</a>
-    </p>
-  </main>
+    <div class="card"><div class="card-header"><div class="card-icon">📄</div><div><div class="card-title">1. Accord</div><div class="card-subtitle">Ce que vous acceptez en utilisant Slippr</div></div></div>
+    <p>En téléchargeant, installant ou utilisant Slippr (l'« App »), vous acceptez ces conditions générales. Si vous n'êtes pas d'accord, n'utilisez pas l'App.</p>
+    <p>Slippr est géré par <strong>Ben Renier</strong> (l'« Opérateur »), établi en Belgique.</p></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">🎯</div><div><div class="card-title">2. Ce que fait Slippr</div><div class="card-subtitle">Objectif et limites</div></div></div>
+    <p>Slippr est un scanner de reçus qui utilise l'intelligence artificielle pour extraire des données de reçus et factures photographiés ou téléchargés.</p>
+    <div class="warning-box">Slippr est un outil d'aide à la comptabilité — <strong>pas un substitut</strong> aux conseils fiscaux, comptables ou juridiques professionnels.</div></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">👤</div><div><div class="card-title">3. Votre compte</div><div class="card-subtitle">Responsabilités</div></div></div>
+    <ul><li>Vous vous connectez avec un compte Google. Vous êtes responsable de la sécurité de vos identifiants Google.</li><li>Vous devez avoir au moins <strong>16 ans</strong> pour utiliser l'App.</li><li>Un compte par personne. Le partage de comptes n'est pas autorisé.</li></ul></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">💳</div><div><div class="card-title">4. Tarifs et abonnements</div><div class="card-subtitle">Version gratuite et Premium</div></div></div>
+    <ul><li><strong>Version gratuite :</strong> 5 scans au total par compte.</li><li><strong>Abonnement Premium :</strong> 7,99 €/mois pour un nombre de scans illimité. Facturé via Google Play Billing.</li><li>Les abonnements sont renouvelés automatiquement jusqu'à annulation. Annulation possible à tout moment via votre compte Google Play.</li><li>Les remboursements sont gérés par Google Play selon leur politique. L'Opérateur ne traite pas directement les remboursements.</li></ul></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">🔒</div><div><div class="card-title">5. Vos données</div><div class="card-subtitle">Propriété et stockage</div></div></div>
+    <ul><li>Les données que vous saisissez (reçus, montants, photos) <strong>vous appartiennent</strong>.</li><li>Ces données sont stockées sur une infrastructure cloud sécurisée (Supabase, région UE) afin que vous puissiez les récupérer en cas de perte de votre appareil.</li><li>Consultez notre <a href="index.html">politique de confidentialité</a> pour plus de détails sur ce que nous collectons et comment c'est traité.</li><li>Vous pouvez supprimer votre compte et toutes les données associées à tout moment via l'écran Paramètres de l'app.</li></ul></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">🤖</div><div><div class="card-title">6. Précision de l'extraction IA</div><div class="card-subtitle">Vous restez responsable en dernier ressort</div></div></div>
+    <p>Slippr utilise l'IA (Anthropic Claude) pour extraire des données des reçus. L'IA est généralement fiable mais <strong>pas parfaite</strong>.</p>
+    <div class="warning-box">Vous êtes responsable de <strong>vérifier chaque valeur extraite</strong> avant de la transmettre à votre comptable ou aux autorités fiscales. Slippr fait des suggestions ; <strong>vous êtes l'autorité finale</strong> sur ce qui est correct.</div></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">⚠️</div><div><div class="card-title">7. Utilisation acceptable</div><div class="card-subtitle">Ce qui n'est pas autorisé</div></div></div>
+    <p>Vous acceptez de ne pas :</p>
+    <ul><li>Utiliser l'App à des fins illégales ou pour traiter des documents frauduleux.</li><li>Procéder à de l'ingénierie inverse, décompiler ou tenter d'extraire le code source de l'App.</li><li>Contourner le paywall, les limites de scan ou la vérification d'abonnement.</li><li>Partager des scans de reçus d'autres personnes sans leur permission.</li><li>Télécharger du contenu violant des droits de propriété intellectuelle, diffamatoire ou contenant des logiciels malveillants.</li></ul>
+    <p>Toute violation peut entraîner la résiliation immédiate de votre compte, sans remboursement.</p></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">⚖️</div><div><div class="card-title">8. Notre responsabilité</div><div class="card-subtitle">Limites</div></div></div>
+    <p>L'App est fournie <strong>« telle quelle »</strong>, sans garantie d'aucune sorte. Dans la mesure permise par la loi :</p>
+    <ul><li>Nous ne sommes pas responsables des erreurs fiscales, pénalités fiscales, déductions manquées ou autres pertes financières résultant de votre utilisation de l'App.</li><li>Nous ne sommes pas responsables de la perte de données due à une panne d'appareil, une désinstallation ou une perte. Nous fournissons une sauvegarde cloud, mais aucune garantie de disponibilité.</li><li>Notre responsabilité totale, le cas échéant, est limitée au montant que vous nous avez payé au cours des 12 mois précédant la réclamation.</li></ul></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">🔄</div><div><div class="card-title">9. Modifications des conditions</div><div class="card-subtitle">Comment nous communiquons</div></div></div>
+    <p>Nous pouvons mettre à jour ces conditions de temps à autre. L'utilisation continue de l'App après modification constitue l'acceptation des nouvelles conditions. Les changements importants seront annoncés dans l'app.</p></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">🚪</div><div><div class="card-title">10. Résiliation</div><div class="card-subtitle">Fin d'utilisation</div></div></div>
+    <ul><li>Vous pouvez cesser d'utiliser l'App et supprimer votre compte à tout moment.</li><li>Nous pouvons suspendre ou résilier votre compte si vous violez ces conditions, avec ou sans préavis.</li><li>À la résiliation, votre droit d'utiliser l'App cesse immédiatement. Les données peuvent être conservées jusqu'à 30 jours pour des raisons techniques avant suppression définitive.</li></ul></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">🇧🇪</div><div><div class="card-title">11. Droit applicable</div><div class="card-subtitle">Juridiction</div></div></div>
+    <p>Ces conditions sont régies par le droit belge. Tout litige sera soumis aux tribunaux compétents de Belgique, sans préjudice des lois impératives de protection des consommateurs qui vous sont applicables.</p></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">📬</div><div><div class="card-title">12. Contact</div><div class="card-subtitle">Questions concernant ces conditions</div></div></div>
+    <div class="highlight-box">📧 <strong>E-mail :</strong> ben1998.br@gmail.com</div></div>
+
+    <p class="footer-note"><a href="index.html">← Retour à la politique de confidentialité</a></p>
+  </div>
+
+  <!-- ENGLISH -->
+  <div class="lang-section" id="lang-en">
+    <p class="updated">Last updated: April 18, 2026</p>
+
+    <div class="card"><div class="card-header"><div class="card-icon">📄</div><div><div class="card-title">1. Agreement</div><div class="card-subtitle">What you accept by using Slippr</div></div></div>
+    <p>By downloading, installing or using Slippr (the "App"), you agree to these Terms of Service. If you do not agree, do not use the App.</p>
+    <p>Slippr is operated by <strong>Ben Renier</strong> (the "Operator") based in Belgium.</p></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">🎯</div><div><div class="card-title">2. What Slippr does</div><div class="card-subtitle">Purpose and limitations</div></div></div>
+    <p>Slippr is a receipt-scanning app that uses artificial intelligence to extract data from photographed or uploaded receipts and invoices.</p>
+    <div class="warning-box">Slippr is a bookkeeping aid — <strong>not a substitute</strong> for professional tax, accounting or legal advice.</div></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">👤</div><div><div class="card-title">3. Your account</div><div class="card-subtitle">Responsibilities</div></div></div>
+    <ul><li>You sign in with a Google account. You are responsible for keeping your Google credentials secure.</li><li>You must be at least <strong>16 years old</strong> to use the App.</li><li>One account per person. Sharing accounts is not permitted.</li></ul></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">💳</div><div><div class="card-title">4. Pricing and subscriptions</div><div class="card-subtitle">Free tier and Premium</div></div></div>
+    <ul><li><strong>Free tier:</strong> 5 receipt scans in total per account.</li><li><strong>Premium subscription:</strong> €7.99/month for unlimited scanning. Billed through Google Play Billing.</li><li>Subscriptions renew automatically until cancelled. Cancel at any time in your Google Play account.</li><li>Refunds are handled by Google Play according to their policies. The Operator does not process refunds directly.</li></ul></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">🔒</div><div><div class="card-title">5. Your data</div><div class="card-subtitle">Ownership and storage</div></div></div>
+    <ul><li>The data you enter (receipts, amounts, photos) <strong>belongs to you</strong>.</li><li>This data is stored on secure cloud infrastructure (Supabase, EU region) so you can recover it if your device is lost.</li><li>See our <a href="index.html">Privacy Policy</a> for details on what we collect and how it is processed.</li><li>You can delete your account and all associated data at any time from the app's Settings screen.</li></ul></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">🤖</div><div><div class="card-title">6. Accuracy of AI extraction</div><div class="card-subtitle">You remain ultimately responsible</div></div></div>
+    <p>Slippr uses AI (Anthropic Claude) to extract data from receipts. The AI is generally reliable but <strong>not perfect</strong>.</p>
+    <div class="warning-box">You are responsible for <strong>verifying every extracted value</strong> before submitting it to your accountant or tax authority. Slippr provides suggestions; <strong>you are the final authority</strong> on what is correct.</div></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">⚠️</div><div><div class="card-title">7. Acceptable use</div><div class="card-subtitle">What's not allowed</div></div></div>
+    <p>You agree not to:</p>
+    <ul><li>Use the App for illegal purposes or to process fraudulent documents.</li><li>Reverse-engineer, decompile or attempt to extract source code from the App.</li><li>Circumvent the paywall, quota limits or subscription verification.</li><li>Share scans of other people's receipts without their permission.</li><li>Upload content that violates intellectual property rights, is defamatory or contains malware.</li></ul>
+    <p>Violation may result in immediate termination of your account without refund.</p></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">⚖️</div><div><div class="card-title">8. Our liability</div><div class="card-subtitle">Limitations</div></div></div>
+    <p>The App is provided <strong>"as is"</strong>, without warranties of any kind. To the maximum extent permitted by law:</p>
+    <ul><li>We are not liable for tax errors, fiscal penalties, missed deductions, or other financial loss arising from your use of the App.</li><li>We are not liable for data loss due to device failure, uninstallation or loss. We provide cloud backup but make no uptime guarantee.</li><li>Our total liability, if any, is limited to the amount you paid us in the 12 months prior to the claim.</li></ul></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">🔄</div><div><div class="card-title">9. Changes to these terms</div><div class="card-subtitle">How we communicate</div></div></div>
+    <p>We may update these Terms from time to time. Continued use of the App after changes constitutes acceptance of the new Terms. Significant changes will be notified in-app.</p></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">🚪</div><div><div class="card-title">10. Termination</div><div class="card-subtitle">End of use</div></div></div>
+    <ul><li>You may stop using the App and delete your account at any time.</li><li>We may suspend or terminate your account if you violate these Terms, with or without notice.</li><li>Upon termination, your right to use the App ends immediately. Data may be retained for up to 30 days for technical reasons before permanent deletion.</li></ul></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">🇧🇪</div><div><div class="card-title">11. Governing law</div><div class="card-subtitle">Jurisdiction</div></div></div>
+    <p>These Terms are governed by the laws of Belgium. Any dispute will be submitted to the competent courts of Belgium, without prejudice to any mandatory consumer-protection laws that apply to you.</p></div>
+
+    <div class="card"><div class="card-header"><div class="card-icon">📬</div><div><div class="card-title">12. Contact</div><div class="card-subtitle">Questions about these Terms</div></div></div>
+    <div class="highlight-box">📧 <strong>Email:</strong> ben1998.br@gmail.com</div></div>
+
+    <p class="footer-note"><a href="index.html">← Back to Privacy Policy</a></p>
+  </div>
+
+</main>
+
+<footer>© 2026 Slippr · ben1998.br@gmail.com</footer>
+
+<script>
+  function switchLang(lang, btn) {
+    document.querySelectorAll('.lang-section').forEach(function (s) { s.classList.remove('active'); });
+    var target = document.getElementById('lang-' + lang);
+    if (target) target.classList.add('active');
+    document.querySelectorAll('.lang-btn').forEach(function (b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
 </body>
 </html>
